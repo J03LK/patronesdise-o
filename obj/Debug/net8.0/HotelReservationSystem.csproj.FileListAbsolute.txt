@@ -1,0 +1,14 @@
+C:\CrediPoint\HotelReservationSystem\bin\Debug\net8.0\HotelReservationSystem.exe
+C:\CrediPoint\HotelReservationSystem\bin\Debug\net8.0\HotelReservationSystem.deps.json
+C:\CrediPoint\HotelReservationSystem\bin\Debug\net8.0\HotelReservationSystem.runtimeconfig.json
+C:\CrediPoint\HotelReservationSystem\bin\Debug\net8.0\HotelReservationSystem.dll
+C:\CrediPoint\HotelReservationSystem\bin\Debug\net8.0\HotelReservationSystem.pdb
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.AssemblyInfoInputs.cache
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.AssemblyInfo.cs
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.csproj.CoreCompileInputs.cache
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.dll
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\refint\HotelReservationSystem.dll
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.pdb
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\HotelReservationSystem.genruntimeconfig.cache
+C:\CrediPoint\HotelReservationSystem\obj\Debug\net8.0\ref\HotelReservationSystem.dll
