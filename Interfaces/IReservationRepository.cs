@@ -3,19 +3,19 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Interfaces
 {
-    // Interface for the Repository pattern to manage reservations storage
+    // Interfaz para el patrón Repository para manejar el almacenamiento de reservas
     public interface IReservationRepository
     {
-        // Saves a new reservation in the repository
+        // Guarda una nueva reserva en el repositorio
         void Save(Reservation reservation);
 
-        // Finds a reservation by its id, returns null if not found
+        // Busca una reserva por su identificador, retorna null si no se encuentra
         Reservation? GetById(string id);
 
-        // Returns all stored reservations
+        // Retorna todas las reservas almacenadas
         IEnumerable<Reservation> GetAll();
 
-        // Updates the status of an existing reservation
+        // Actualiza el estado de una reserva existente
         void UpdateStatus(string id, string newStatus);
     }
 }

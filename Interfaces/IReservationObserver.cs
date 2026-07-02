@@ -2,10 +2,10 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Interfaces
 {
-    // Interface for the Observer pattern to receive reservation updates
+    // Interfaz para el patrón Observer para recibir actualizaciones de las reservas
     public interface IReservationObserver
     {
-        // Method called when a reservation state changes
+        // Método llamado cuando cambia el estado de una reserva
         void Update(Reservation reservation);
     }
 }

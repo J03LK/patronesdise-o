@@ -2,13 +2,13 @@ using HotelReservationSystem.Interfaces;
 
 namespace HotelReservationSystem.Patterns.Strategy
 {
-    // Pricing strategy for low season
+    // Estrategia de precios para temporada baja
     public class LowSeasonPricing : IPricingStrategy
     {
-        // Calculates price applying a 20% discount
+        // Calcula el precio aplicando un descuento del 20%
         public decimal CalculatePrice(decimal basePrice, int nights)
         {
-            // Base price x 0.8 (20% discount) x number of nights
+            // Precio base x 0.8 (20% de descuento) x cantidad de noches
             return (basePrice * 0.8m) * nights;
         }
     }

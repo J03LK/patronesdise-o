@@ -4,13 +4,13 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Patterns.Observer
 {
-    // Observer responsible for notifying the guest
+    // Observador responsable de notificar al huésped
     public class GuestNotifier : IReservationObserver
     {
-        // Method triggered on reservation state changes
+        // Método que se activa con los cambios de estado de la reserva
         public void Update(Reservation reservation)
         {
-            // Display a message in Spanish to the console
+            // Mostrar un mensaje en la consola para el huésped
             Console.WriteLine($"[GuestNotifier] Hola {reservation.GuestName}, el estado de tu reserva {reservation.Id} ahora es: {reservation.Status}.");
         }
     }

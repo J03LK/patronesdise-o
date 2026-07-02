@@ -2,13 +2,13 @@ using HotelReservationSystem.Interfaces;
 
 namespace HotelReservationSystem.Patterns.Strategy
 {
-    // Pricing strategy for high season
+    // Estrategia de precios para temporada alta
     public class HighSeasonPricing : IPricingStrategy
     {
-        // Calculates price applying a 50% surcharge
+        // Calcula el precio aplicando un recargo del 50%
         public decimal CalculatePrice(decimal basePrice, int nights)
         {
-            // Base price x 1.5 (50% surcharge) x number of nights
+            // Precio base x 1.5 (50% de recargo) x cantidad de noches
             return (basePrice * 1.5m) * nights;
         }
     }

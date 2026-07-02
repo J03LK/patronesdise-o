@@ -3,16 +3,16 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Patterns.Factory
 {
-    // Factory class for creating Reservation objects based on room type
+    // Clase Factory para crear objetos Reservation basados en el tipo de habitación
     public static class ReservationFactory
     {
-        // Factory method to create a reservation with predefined base prices
+        // Método de fábrica para crear una reserva con precios base predefinidos
         public static Reservation CreateReservation(string id, string guestName, string type, int nights)
         {
-            // Create a new base reservation object
+            // Crear un nuevo objeto de reserva base
             var reservation = new Reservation
             {
-                // Set the basic properties
+                // Configurar las propiedades básicas
                 Id = id,
                 GuestName = guestName,
                 RoomType = type,
@@ -20,27 +20,27 @@ namespace HotelReservationSystem.Patterns.Factory
                 Status = "Pendiente"
             };
 
-            // Set the base price depending on the room type
+            // Establecer el precio base dependiendo del tipo de habitación
             switch (reservation.RoomType)
             {
-                // Simple room: $50/night
+                // Habitación simple: $50/noche
                 case "Simple":
                     reservation.BasePrice = 50m;
                     break;
-                // Double room: $90/night
+                // Habitación doble: $90/noche
                 case "Doble":
                     reservation.BasePrice = 90m;
                     break;
-                // Suite room: $200/night
+                // Habitación suite: $200/noche
                 case "Suite":
                     reservation.BasePrice = 200m;
                     break;
-                // Throw an exception if the room type is invalid
+                // Lanzar una excepción si el tipo de habitación es inválido
                 default:
                     throw new ArgumentException($"Tipo de habitación desconocido: {type}");
             }
 
-            // Return the constructed reservation
+            // Retornar la reserva construida
             return reservation;
         }
     }

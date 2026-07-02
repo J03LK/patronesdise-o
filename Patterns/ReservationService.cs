@@ -5,79 +5,79 @@ using HotelReservationSystem.Patterns.Factory;
 
 namespace HotelReservationSystem.Patterns
 {
-    // Service to orchestrate reservations, decoupled from concrete repository
+    // Servicio para orquestar reservas, desacoplado del repositorio concreto
     public class ReservationService
     {
-        // Reference to the repository interface
+        // Referencia a la interfaz del repositorio
         private readonly IReservationRepository _repository;
         
-        // List of global observers to attach to new reservations
+        // Lista de observadores globales para adjuntar a nuevas reservas
         private readonly List<IReservationObserver> _globalObservers;
 
-        // Constructor injecting the repository dependency
+        // Constructor que inyecta la dependencia del repositorio
         public ReservationService(IReservationRepository repository)
         {
-            // Assign the injected repository
+            // Asignar el repositorio inyectado
             _repository = repository;
-            // Initialize the list of global observers
+            // Inicializar la lista de observadores globales
             _globalObservers = new List<IReservationObserver>();
         }
 
-        // Subscribes a global observer to the service
+        // Suscribe un observador global al servicio
         public void SubscribeObserver(IReservationObserver observer)
         {
-            // Add the observer to the list
+            // Agregar el observador a la lista
             _globalObservers.Add(observer);
         }
 
-        // Unsubscribes a global observer from the service
+        // Desuscribe un observador global del servicio
         public void UnsubscribeObserver(IReservationObserver observer)
         {
-            // Remove the observer from the list
+            // Remover el observador de la lista
             _globalObservers.Remove(observer);
             
-            // Also detach from all existing reservations in the repository
+            // También separarlo de todas las reservas existentes en el repositorio
             foreach (var reservation in _repository.GetAll())
             {
-                // Detach the observer
+                // Separar el observador
                 reservation.Detach(observer);
             }
         }
 
-        // Creates a new reservation, applies pricing, attaches observers and saves it
+        // Crea una nueva reserva, aplica el precio, adjunta observadores y la guarda
         public Reservation CreateReservation(string id, string guestName, string roomType, int nights, IPricingStrategy pricingStrategy)
         {
-            // Create the reservation using the Factory Method
+            // Crear la reserva utilizando el Factory Method
             var reservation = ReservationFactory.CreateReservation(id, guestName, roomType, nights);
             
-            // Calculate the total price using the provided Strategy
+            // Calcular el precio total utilizando el Strategy proporcionado
             reservation.TotalPrice = pricingStrategy.CalculatePrice(reservation.BasePrice, nights);
 
-            // Attach all subscribed global observers to this new reservation
+            // Adjuntar todos los observadores globales suscritos a esta nueva reserva
             foreach (var observer in _globalObservers)
             {
-                // Attach the observer
+                // Adjuntar el observador
                 reservation.Attach(observer);
             }
 
-            // Save the reservation in the Repository
+            // Guardar la reserva en el Repository
             _repository.Save(reservation);
 
-            // Return the created reservation
+            // Retornar la reserva creada
             return reservation;
         }
 
-        // Updates the status of an existing reservation
+        // Actualiza el estado de una reserva existente
         public void UpdateReservationStatus(string id, string newStatus)
         {
-            // Delegate the update to the repository
+            // Delegar la actualización al repositorio
             _repository.UpdateStatus(id, newStatus);
         }
 
-        // Retrieves all reservations
+        // Recupera todas las reservas
         public IEnumerable<Reservation> GetAllReservations()
         {
-            // Return from the repository
+            // Retornar desde el repositorio
             return _repository.GetAll();
         }
     }

@@ -5,42 +5,42 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Patterns.Repository
 {
-    // Repository class to manage in-memory storage of reservations
+    // Clase repositorio para manejar el almacenamiento en memoria de las reservas
     public class ReservationRepository : IReservationRepository
     {
-        // In-memory list to store reservations
+        // Lista en memoria para almacenar las reservas
         private readonly List<Reservation> _reservations = new List<Reservation>();
 
-        // Saves a new reservation to the list
+        // Guarda una nueva reserva en la lista
         public void Save(Reservation reservation)
         {
-            // Add the reservation to the in-memory list
+            // Agregar la reserva a la lista en memoria
             _reservations.Add(reservation);
         }
 
-        // Retrieves a reservation by its unique identifier
+        // Recupera una reserva por su identificador único
         public Reservation? GetById(string id)
         {
-            // Find and return the first reservation matching the id, or null
+            // Buscar y retornar la primera reserva que coincida con el id, o null
             return _reservations.FirstOrDefault(r => r.Id == id);
         }
 
-        // Returns all reservations currently stored
+        // Retorna todas las reservas almacenadas actualmente
         public IEnumerable<Reservation> GetAll()
         {
-            // Return the list of reservations
+            // Retornar la lista de reservas
             return _reservations;
         }
 
-        // Updates the status of an existing reservation
+        // Actualiza el estado de una reserva existente
         public void UpdateStatus(string id, string newStatus)
         {
-            // Find the reservation by id
+            // Buscar la reserva por su id
             var reservation = GetById(id);
-            // If the reservation exists
+            // Si la reserva existe
             if (reservation != null)
             {
-                // Update its status, this will trigger the observers
+                // Actualizar su estado, esto activará los observadores
                 reservation.Status = newStatus;
             }
         }

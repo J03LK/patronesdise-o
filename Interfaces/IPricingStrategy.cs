@@ -1,9 +1,9 @@
 namespace HotelReservationSystem.Interfaces
 {
-    // Interface for the Strategy pattern defining how to calculate the final price
+    // Interfaz para el patrón Strategy que define cómo calcular el precio final
     public interface IPricingStrategy
     {
-        // Calculates the final price based on the base price and number of nights
+        // Calcula el precio final basado en el precio base y la cantidad de noches
         decimal CalculatePrice(decimal basePrice, int nights);
     }
 }

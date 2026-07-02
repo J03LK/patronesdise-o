@@ -3,71 +3,71 @@ using HotelReservationSystem.Interfaces;
 
 namespace HotelReservationSystem.Models
 {
-    // Class representing a hotel reservation, acts as the Subject in the Observer pattern
+    // Clase que representa una reserva de hotel, actúa como Subject en el patrón Observer
     public class Reservation
     {
-        // Unique identifier for the reservation
+        // Identificador único para la reserva
         public string Id { get; set; } = string.Empty;
         
-        // Name of the guest making the reservation
+        // Nombre del huésped que hace la reserva
         public string GuestName { get; set; } = string.Empty;
         
-        // Type of room booked (simple, double, suite)
+        // Tipo de habitación reservada (simple, doble, suite)
         public string RoomType { get; set; } = string.Empty;
         
-        // Base price of the room per night
+        // Precio base de la habitación por noche
         public decimal BasePrice { get; set; }
         
-        // Total price calculated using the pricing strategy
+        // Precio total calculado utilizando la estrategia de precios
         public decimal TotalPrice { get; set; }
         
-        // Number of nights for the stay
+        // Número de noches de estadía
         public int Nights { get; set; }
 
-        // Backing field for the Status property
+        // Campo de respaldo para la propiedad Status
         private string _status = "Pending";
         
-        // Current status of the reservation (Pending, Confirmed, CheckedIn, CheckedOut, Cancelled)
+        // Estado actual de la reserva (Pending, Confirmed, CheckedIn, CheckedOut, Cancelled)
         public string Status 
         { 
             get { return _status; } 
             set 
             {
-                // Only update and notify if the status actually changes
+                // Solo actualizar y notificar si el estado realmente cambia
                 if (_status != value)
                 {
-                    // Update the internal status
+                    // Actualizar el estado interno
                     _status = value;
-                    // Automatically notify observers of the state change
+                    // Notificar automáticamente a los observadores sobre el cambio de estado
                     NotifyObservers();
                 }
             } 
         }
 
-        // List of subscribed observers
+        // Lista de observadores suscritos
         private List<IReservationObserver> _observers = new List<IReservationObserver>();
 
-        // Attaches a new observer to this reservation
+        // Adjunta un nuevo observador a esta reserva
         public void Attach(IReservationObserver observer)
         {
-            // Add observer to the list
+            // Agregar el observador a la lista
             _observers.Add(observer);
         }
 
-        // Detaches an existing observer from this reservation
+        // Separa un observador existente de esta reserva
         public void Detach(IReservationObserver observer)
         {
-            // Remove observer from the list
+            // Remover el observador de la lista
             _observers.Remove(observer);
         }
 
-        // Notifies all subscribed observers about the state change
+        // Notifica a todos los observadores suscritos sobre el cambio de estado
         private void NotifyObservers()
         {
-            // Loop through each observer and call its Update method
+            // Iterar a través de cada observador y llamar a su método Update
             foreach (var observer in _observers)
             {
-                // Pass the current reservation object to the observer
+                // Pasar el objeto de reserva actual al observador
                 observer.Update(this);
             }
         }

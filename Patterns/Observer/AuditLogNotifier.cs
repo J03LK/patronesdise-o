@@ -4,15 +4,15 @@ using HotelReservationSystem.Models;
 
 namespace HotelReservationSystem.Patterns.Observer
 {
-    // Observer responsible for logging system events
+    // Observador responsable de registrar los eventos del sistema
     public class AuditLogNotifier : IReservationObserver
     {
-        // Method triggered on reservation state changes
+        // Método que se activa con los cambios de estado de la reserva
         public void Update(Reservation reservation)
         {
-            // Get current timestamp
+            // Obtener la fecha y hora actual
             var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            // Log the reservation update in Spanish
+            // Registrar la actualización de la reserva en español
             Console.WriteLine($"[AuditLogNotifier] [{timestamp}] Registro de auditoría: Reserva {reservation.Id} actualizada al estado '{reservation.Status}'.");
         }
     }
